@@ -1,4 +1,3 @@
-#include <iostream>
 #include <vector>
 #include <Eigen/Eigen>
 #include "FracturesAndTraces.hpp"
