@@ -1,4 +1,5 @@
 #include <vector>
+#include <string>
 #include <Eigen/Eigen>
 #include "FracturesAndTraces.hpp"
 #include "ImportExport.hpp"
