@@ -26,7 +26,7 @@ bool importListFractures(const string& inputFilePath, DFN& fracture)
     }
 
     string line;
-    getline(file, line);                    // Lettura di "# Number of Fractures"
+    getline(file, line);                     // Lettura di "# Number of Fractures"
 
     int NumberOfFractures = stoi(line);
 
@@ -57,30 +57,6 @@ bool importListFractures(const string& inputFilePath, DFN& fracture)
         fractures.push_back(fracture);
     }
 
-    // unsigned int NumberOfFractures = stoi(line);
-
-    // vector<structOfFractures> fractures;
-    // char pv;
-
-    // while (NumberOfFractures--)
-    // {
-    //     structOfFractures fracture;
-    //     getline(file, line); // Leggi e scarta la riga "# FractureId; NumVertices"
-    //     getline(file, line); // Leggi la riga con l'ID e il numero di vertici
-    //     stringstream ss(line);
-    //     ss >> fracture.FractureId >> pv >> fracture.NumVertices;
-
-    //     fracture.Vertices.size(3, fracture.NumVertices);
-
-    //     // Leggi i vertici
-    //     for (unsigned int i = 0; i < fracture.NumVertices; ++i) {
-    //         for (unsigned int j = 0; j < 3; ++j) {
-    //             file >> fracture.Vertices(j, i);
-    //         }
-    //     }
-
-    //     fractures.push_back(fracture);
-    // }
 
     file.close();
     return true;

@@ -1,13 +1,15 @@
 #pragma once
+
 #include <FracturesAndTraces.hpp>
 #include <iostream>
-#include <Eigen/Eigen>
-#include <vector>
+#include <sstream>
+#include <fstream>
+#include <cmath>
 #include <array>
+#include <vector>
+#include <algorithm>
 
-using namespace std;
-using namespace Eigen;
-using namespace DiscreteAndFractureNetworkLibrary;
-
-
-bool importListFracture(const string& filename, DFN& fracture);
+namespace DiscreteAndFractureNetworkLibrary
+{
+bool importListFractures(const std::string& inputFilePath, DFN& fracture);
+}
