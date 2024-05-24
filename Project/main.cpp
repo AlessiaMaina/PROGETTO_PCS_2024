@@ -1,5 +1,10 @@
 #include <vector>
+<<<<<<< HEAD
 #include <iostream>
+=======
+#include <string>
+#include <Eigen/Eigen>
+>>>>>>> 506ab04155fa68449e9942548ea9ebad59b34af8
 #include "FracturesAndTraces.hpp"
 #include "ImportExport.hpp"
 
