@@ -8,6 +8,7 @@
 #include <array>
 #include <vector>
 #include <algorithm>
+#include <string>
 
 namespace DiscreteAndFractureNetworkLibrary
 {

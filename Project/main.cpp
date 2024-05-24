@@ -1,11 +1,10 @@
 #include <vector>
-#include <Eigen/Eigen>
+#include <iostream>
 #include "FracturesAndTraces.hpp"
 #include "ImportExport.hpp"
 
 using namespace DiscreteAndFractureNetworkLibrary;
 using namespace std;
-using namespace Eigen;
 
 int main() {
     vector<DFN> fractures;
@@ -13,8 +12,7 @@ int main() {
 
     string filepath = "./FR3_data.txt";
 
-    if (!importListFractures (filepath, fracture))
-    {
+    if (!importListFractures(filepath, fracture)) {
         cout << "Errore nella lettura del file di fratture." << endl;
         return 1;
     }
