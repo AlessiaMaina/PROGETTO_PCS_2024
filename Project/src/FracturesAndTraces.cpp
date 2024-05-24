@@ -10,6 +10,7 @@
 
 using namespace std;
 using namespace Eigen;
+<<<<<<< HEAD
 using namespace DiscreteAndFractureNetworkLibrary;
 
 
@@ -38,3 +39,6 @@ bool checkFractures(const vector<DFN>& fractures, double defaultTolerance)
         }
     }
 }
+=======
+
+>>>>>>> 97dc8a319b0f0a593e154e3be4be48de265f4cb4
