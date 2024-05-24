@@ -5,112 +5,89 @@
 #include <string>
 
 using namespace std;
-<<<<<<< HEAD
-=======
 
-namespace DiscreteAndFractureNetworkLibrary {
->>>>>>> 97dc8a319b0f0a593e154e3be4be48de265f4cb4
+namespace DiscreteAndFractureNetworkLibrary
+{
 
-bool importListFractures(const string& inputFilePath, DFN& fracture) {
+bool importListFractures(const string& inputFilePath, vector<DFN>& fractures)
+{
     ifstream file(inputFilePath);
+    file.open(inputFilePath);
 
-    if (!file.is_open()) {
+    if (file.fail())
+    {
         cerr << "ATTENTION: Input File open failed!" << endl;
         return false;
     }
 
     string header;
-<<<<<<< HEAD
-    getline(file, header);                      // Lettura della riga header, ovvero "# Number of Fractures"
+    getline(file, header);              // Lettura di "# Number of Fractures"
 
     string line;
     getline(file, line);
-    //int NumberOfFractures = stoi(line);
 
     istringstream iss(line);
     int NumberOfFractures;
     if (!(iss >> NumberOfFractures))
     {
-        cerr << "ERROR: impossible convert string into integer!" << endl;
+        cerr << "Error: Failed to convert string to integer!" << endl;
         return false;
     }
 
     for (int i = 0; i < NumberOfFractures; ++i)
     {
-        getline(file, line);                    // Lettura della riga "# FractureId; NumVertices"
-=======
-    getline(file, header); // Lettura di "# Number of Fractures"
-
-    string line;
-    getline(file, line);
-    //int NumberOfFractures = stoi(line);
-
-    istringstream iss(line);
-    int NumberOfFractures;
-    if (!(iss >> NumberOfFractures)) {
-        cerr << "Error: Failed to convert string to integer!" << endl;
-        return false;
-    }
-
-
-    for (int i = 0; i < NumberOfFractures; ++i) {
-        getline(file, line); // Lettura di "# FractureId; NumVertices"
->>>>>>> 97dc8a319b0f0a593e154e3be4be48de265f4cb4
+        DFN fracture;
+        getline(file, line);            // Lettura di "# FractureId; NumVertices"
         stringstream converter(line);
-        char del;
+        char del = ';';
         int FractureId, NumVertices;
         converter >> del >> FractureId >> del >> NumVertices;
-
         fracture.FractureId = FractureId;
-
-        vector<DFN> fractures;
         vector<vector<double>> Vertices(3, vector<double>(NumVertices));
 
         getline(file, line);
-        for (int j = 0; j < NumVertices; ++j) {
+
+        for (int j = 0; j < NumVertices; ++j)
+        {
             getline(file, line);
             stringstream ss(line);
-            for (int k = 0; k < 3; ++k) {
+            for (int k = 0; k < 3; ++k)
+            {
                 ss >> Vertices[k][j];
                 ss.ignore();
             }
         }
         fractures.push_back(fracture);
     }
-
     file.close();
     return true;
 }
 
-<<<<<<< HEAD
 
-void printFractures(const vector<DFN>& fractures, ostream& output)
+void printFractures(const vector<DFN>& fractures, ostream& outputFile)
 {
-    output << "Fractures Information:" << endl;
+    outputFile << "Fractures Information:" << endl;
     for (const auto& fracture : fractures)
     {
-        output << "Fracture ID: " << fracture.FractureId << endl;
-        output << "Number of Vertices: " << fracture.VerticesOfFractures.size() << endl;
-        output << "Vertices:" << endl;
+        outputFile << "Fracture ID: " << fracture.FractureId << endl;
+        outputFile << "Number of Vertices: " << fracture.VerticesOfFractures.size() << endl;
+        outputFile << "Vertices:" << endl;
         for (const auto& vertex : fracture.VerticesOfFractures)
         {
-            output << "    (";
+            outputFile << "  ";
             for (size_t i = 0; i < vertex.size(); ++i)
             {
-                output << vertex[i];
+                outputFile << vertex[i];
                 if (i != vertex.size() - 1)
                 {
-                    output << ", ";
+                    outputFile << ", ";
                 }
             }
-            output << ")" << endl;
+            outputFile << "  " << endl;
         }
     }
 }
 
-
 }
 
-=======
-} // namespace DiscreteAndFractureNetworkLibrary
->>>>>>> 97dc8a319b0f0a593e154e3be4be48de265f4cb4
+

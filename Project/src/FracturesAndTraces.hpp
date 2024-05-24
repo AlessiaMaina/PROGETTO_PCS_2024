@@ -32,8 +32,8 @@ struct DFN
     vector<double> Length = {};                                         // Vettore che contiene la lunghezza tracce
 };
 
-bool checkFractures(double defaultTolerance);
-bool checkTraces(double defaultTolerance);
+bool testFractures(double defaultTolerance);
+bool testTraces(double defaultTolerance);
 
 
 
