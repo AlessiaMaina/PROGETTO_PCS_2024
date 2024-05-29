@@ -15,5 +15,7 @@ using namespace DiscreteAndFractureNetworkLibrary;
 
 bool importListFractures(const string& inputFilePath, DFN& fracture);
 void printFractures(const vector<DFN>& fractures, ostream& outputFile);
+
+bool exportTraces(const string& outputFilePath, const DFN& fracture);
 void printTraces();
 

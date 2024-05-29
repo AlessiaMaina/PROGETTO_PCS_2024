@@ -48,6 +48,33 @@ bool testFractures(const vector<DFN>& fractures, double defaultTolerance)
 }
 
 
+void computationOfTraces(vector<DFN>& fractures, DFN& fracture)
+{
+    unsigned int traceId = 1;
+    for (size_t i = 0; i < fractures.size(); ++i)
+    {
+        for (size_t j = i + 1; j < fractures.size(); ++j)
+        {
+            const DFN& fracture1 = fractures[i];
+            const DFN& fracture2 = fractures[j];
+            for (const Vector3d& vec1 : fracture1.VerticesOfFractures)
+            {
+                for (const Vector3d& vec2 : fracture2.VerticesOfFractures)
+                {
+                    if ((vec1 - vec2).norm() < fracture.defaultTolerance)
+                    {
+                        fracture.FractureIds[traceId] = {fracture1.FractureId, fracture2.FractureId};
+                        fracture.VerticesOfTraces[traceId] << vec1, vec2;
+                        traceId++;
+                    }
+                }
+            }
+        }
+    }
+    fracture.NumberOfTraces = traceId - 1;
+}
+
+
 bool testTraces()
 {
 

@@ -18,8 +18,8 @@ int main()
     // Output
     if (!importListFractures(filepath, fracture))
     {
-        cerr << "ATTENTION: Error reading the fracture file!" << endl;
-        return 1;
+        cerr << "ATTENTION: There's an error with the import of the file!" << endl;
+        return 2;
     }
 
     // Output per scopi di test
@@ -33,6 +33,21 @@ int main()
     // Chiamata alla funzione per stampare le informazioni sulle fratture
     printFractures(fractures, cout);
 
+    // Applicazione della funzione che serve per calcolare le tracce
+    computationOfTraces(fractures, fracture);
+
+
+    if (!exportTraces(outputFilePath, fracture))
+    {
+        cerr << "ATTENTION: There's an error with the export of the traces on an output file!" << endl;
+        return 3;
+    }
+
+    cout << "Traces calculated and exported successfully." << endl;
+
 
     return 0;
 }
+
+
+

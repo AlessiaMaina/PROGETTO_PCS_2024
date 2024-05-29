@@ -88,6 +88,30 @@ void printFractures(const vector<DFN>& fractures, ostream& outputFile)
     }
 }
 
+bool exportTraces(const string& outputFilePath, const DFN& fracture)
+{
+    ofstream file(outputFilePath);
+
+    if (!file.is_open())
+    {
+        cerr << "ATTENTION: Output File open failed!" << endl;
+        return false;
+    }
+
+    file << "# Number of Traces\n";
+    file << fracture.NumberOfTraces << "\n";
+
+    file << "# TraceId; FractureId1; FractureId2; X1; Y1; Z1; X2; Y2; Z2\n";
+    for (const auto& [traceId, fractureIds] : fracture.FractureIds)
+    {
+        const auto& vertices = fracture.VerticesOfTraces.at(traceId);
+        file << traceId << "; " << fractureIds[0] << "; " << fractureIds[1] << "; "
+             << vertices(0, 0) << "; " << vertices(1, 0) << "; " << vertices(2, 0) << "; "
+             << vertices(0, 1) << "; " << vertices(1, 1) << "; " << vertices(2, 1) << "\n";
+    }
+
+    file.close();
+    return true;
 }
 
-
+}

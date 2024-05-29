@@ -33,6 +33,8 @@ struct DFN
 };
 
 bool testFractures(double defaultTolerance);
+
+void computationOfTraces(vector<DFN>& fractures, DFN& fracture);
 bool testTraces(double defaultTolerance);
 
 
