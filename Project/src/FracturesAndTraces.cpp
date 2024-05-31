@@ -71,7 +71,7 @@ void computationOfTraces(vector<DFN>& fractures, DFN& fracture)
             }
         }
     }
-    fracture.NumberOfTraces = traceId - 1;
+    fracture.NumberOfTraces = traceId - 1;   // Indica il numero effettivo di tracce trovate
 }
 
 

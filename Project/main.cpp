@@ -14,6 +14,7 @@ int main()
     DFN fracture;
 
     string filepath = "./FR3_data.txt";
+    string outputFilePath = "./FR3_result.txt";
 
     // Output
     if (!importListFractures(filepath, fracture))
